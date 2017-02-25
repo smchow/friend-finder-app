@@ -50,15 +50,27 @@ module.exports = function(app) {
   function getFriend(){
     var maxScore =0 ;
     var picked = 0;
-        console.log(friendsData[friendsData.length-1])
+    console.log("Your Profile:");
+    console.log(friendsData[friendsData.length-1])
     for (var i=0; i< friendsData.length; i++){
         var score = 0;
         for (var j =0; j< friendsData[i].scores.length; j++){
 
-          score += Math.abs(friendsData[i].scores[j]-friendsData[friendsData-1].scores[j])
+          score += Math.abs(friendsData[i].scores[j]-friendsData[friendsData.length-1].scores[j])
         }
+        //console.log(maxScore);
+        //console.log(score);
+        
+
+        if (score > maxScore){
+                  picked = i;
+                  maxScore = score;
+                }
+
     }
-    return friendsData[i];
+    console.log("Best match is:");
+    console.log(friendsData[picked]);
+    return friendsData[picked];
 
   }
 
